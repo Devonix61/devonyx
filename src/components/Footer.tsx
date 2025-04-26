@@ -1,0 +1,93 @@
+
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+
+const Footer = () => {
+  return (
+    <footer className="bg-brand-950 text-white py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <div className="flex items-center space-x-2 mb-6">
+              <div className="h-8 w-8 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 flex items-center justify-center">
+                <span className="font-bold text-white text-xl">D</span>
+              </div>
+              <span className="text-xl font-semibold text-white">
+                Devonyx
+              </span>
+            </div>
+            <p className="text-brand-300 mb-6">
+              Enterprise-grade SaaS solutions for modern businesses. Scale with confidence.
+            </p>
+            <div className="flex space-x-4">
+              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+                <Twitter className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+                <Linkedin className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+                <Github className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+                <Facebook className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+                <Instagram className="h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Analytics</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Automation</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">DevonΩ AI</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Security</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">API Management</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Documentation</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">API Reference</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Case Studies</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Webinars</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Careers</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Partners</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Press Kit</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="pt-8 border-t border-brand-800 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-brand-400 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Devonyx. All rights reserved.
+          </p>
+          
+          <div className="flex flex-wrap gap-4 text-sm text-brand-400">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            <a href="#" className="hover:text-white transition-colors">GDPR</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
