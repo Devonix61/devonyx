@@ -1,4 +1,6 @@
 
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -10,17 +12,44 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const location = useLocation();
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Handle scrolling when navigating from other pages
+    if (location.state && location.state.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
-        <Features />
+        <div id="features" ref={featuresRef}>
+          <Features />
+        </div>
         <Expertise />
         <WhyUs />
-        <Pricing />
-        <Testimonials />
-        <Contact />
+        <div id="pricing" ref={pricingRef}>
+          <Pricing />
+        </div>
+        <div id="testimonials" ref={testimonialsRef}>
+          <Testimonials />
+        </div>
+        <div id="contact" ref={contactRef}>
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>

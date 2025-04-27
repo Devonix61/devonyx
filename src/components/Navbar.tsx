@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 import { supabase } from "@/integrations/supabase/client";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,13 +52,25 @@ const Navbar = () => {
     }
   };
 
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsMenuOpen(false);
+  };
+
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Services', href: '/services' },
-    { name: 'About', href: '/about' },
+    { name: 'Features', id: 'features' },
+    { name: 'Pricing', id: 'pricing' },
+    { name: 'Testimonials', id: 'testimonials' },
+    { name: 'Contact', id: 'contact' },
+    { name: 'About', id: 'about', isPage: true },
+    { name: 'Services', id: 'services', isPage: true },
   ];
 
   return (
@@ -72,29 +85,30 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/a1ea0507-5673-4393-86ca-3b5900287a72.png"
               alt="Logo"
-              className="h-8 w-auto"
+              className="h-10 w-auto" // Increased logo size
             />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                to={link.href}
-                className="text-sm font-medium text-gray-700 hover:text-brand-600 dark:text-gray-200 dark:hover:text-brand-400 transition-colors"
+                onClick={() => link.isPage ? navigate(`/${link.id}`) : scrollToSection(link.id)}
+                className="text-sm font-medium text-gray-700 hover:text-brand-600 dark:text-gray-200 dark:hover:text-brand-400 transition-colors relative group"
               >
                 {link.name}
-              </Link>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all duration-300 group-hover:w-full"></span>
+              </button>
             ))}
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
             {session ? (
-              <Button onClick={handleSignOut}>
+              <Button onClick={handleSignOut} className="bg-brand-600 hover:bg-brand-700 transition-all duration-300">
                 Sign Out
               </Button>
             ) : (
-              <Button onClick={() => navigate('/auth')} variant="default">
+              <Button onClick={() => navigate('/auth')} variant="default" className="bg-brand-600 hover:bg-brand-700 transition-all duration-300">
                 Sign In
               </Button>
             )}
@@ -117,21 +131,20 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-brand-950 shadow-lg">
+        <div className="md:hidden bg-white dark:bg-brand-950 shadow-lg animate-fade-up">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                to={link.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 dark:text-gray-200 dark:hover:text-brand-400 dark:hover:bg-brand-900"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => link.isPage ? navigate(`/${link.id}`) : scrollToSection(link.id)}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 dark:text-gray-200 dark:hover:text-brand-400 dark:hover:bg-brand-900"
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
             <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
               {session ? (
-                <Button onClick={handleSignOut} className="w-full">
+                <Button onClick={handleSignOut} className="w-full bg-brand-600 hover:bg-brand-700">
                   Sign Out
                 </Button>
               ) : (
@@ -140,7 +153,7 @@ const Navbar = () => {
                     navigate('/auth');
                     setIsMenuOpen(false);
                   }} 
-                  className="w-full"
+                  className="w-full bg-brand-600 hover:bg-brand-700"
                 >
                   Sign In
                 </Button>
