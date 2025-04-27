@@ -52,6 +52,10 @@ const Navbar = () => {
   };
 
   const navLinks = [
+    { name: 'Features', href: '#features' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Contact', href: '#contact' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
   ];
@@ -65,12 +69,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 flex items-center justify-center">
-              <span className="font-bold text-white text-xl">D</span>
-            </div>
-            <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-brand-700 to-brand-500 dark:from-brand-500 dark:to-brand-300">
-              Devonyx
-            </span>
+            <img 
+              src="/lovable-uploads/a1ea0507-5673-4393-86ca-3b5900287a72.png"
+              alt="Logo"
+              className="h-8 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
@@ -91,7 +94,7 @@ const Navbar = () => {
                 Sign Out
               </Button>
             ) : (
-              <Button onClick={() => navigate('/auth')}>
+              <Button onClick={() => navigate('/auth')} variant="default">
                 Sign In
               </Button>
             )}
