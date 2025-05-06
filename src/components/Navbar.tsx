@@ -1,18 +1,12 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
-import { supabase } from "@/integrations/supabase/client";
-import { Session } from '@supabase/supabase-js';
-import { toast } from "@/components/ui/use-toast";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [session, setSession] = useState<Session | null>(null);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,34 +18,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleSignOut = async () => {
-    try {
-      await supabase.auth.signOut();
-      toast({
-        title: "Signed out successfully",
-      });
-      navigate('/');
-    } catch (error: any) {
-      toast({
-        title: "Error signing out",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-  };
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -61,9 +27,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Features', id: 'features' },
     { name: 'About', id: 'about' },
     { name: 'Services', id: 'services' },
+    { name: 'Features', id: 'features' },
     { name: 'Pricing', id: 'pricing' },
     { name: 'Testimonials', id: 'testimonials' },
     { name: 'Contact', id: 'contact' },
@@ -79,9 +45,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/e3f7c7b2-44fd-4e25-92f0-2af5f8daf87b.png"
+              src="/lovable-uploads/f169a14a-ea9f-4ae4-9059-81b8ad112365.png"
               alt="Logo"
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
 
@@ -97,18 +63,6 @@ const Navbar = () => {
               </button>
             ))}
           </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            {session ? (
-              <Button onClick={handleSignOut} className="bg-brand-600 hover:bg-brand-700 transition-all duration-300">
-                Sign Out
-              </Button>
-            ) : (
-              <Button onClick={() => navigate('/auth')} variant="default" className="bg-brand-600 hover:bg-brand-700 transition-all duration-300">
-                Sign In
-              </Button>
-            )}
-          </div>
 
           <div className="flex md:hidden">
             <button
@@ -138,23 +92,6 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
-            <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
-              {session ? (
-                <Button onClick={handleSignOut} className="w-full bg-brand-600 hover:bg-brand-700">
-                  Sign Out
-                </Button>
-              ) : (
-                <Button 
-                  onClick={() => {
-                    navigate('/auth');
-                    setIsMenuOpen(false);
-                  }} 
-                  className="w-full bg-brand-600 hover:bg-brand-700"
-                >
-                  Sign In
-                </Button>
-              )}
-            </div>
           </div>
         </div>
       )}

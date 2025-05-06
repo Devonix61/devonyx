@@ -11,9 +11,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <img 
-                src="/lovable-uploads/e3f7c7b2-44fd-4e25-92f0-2af5f8daf87b.png"
+                src="/lovable-uploads/f169a14a-ea9f-4ae4-9059-81b8ad112365.png"
                 alt="Logo"
-                className="h-10 w-auto"
+                className="h-16 w-auto"
               />
             </div>
             <p className="text-brand-300 mb-6">

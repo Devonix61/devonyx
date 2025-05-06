@@ -8,8 +8,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 const pricingPlans = [
   {
     name: "Starter",
-    monthlyPrice: 99,
-    yearlyPrice: 990,
+    monthlyPrice: 7999,
+    yearlyPrice: 79990,
     description: "Perfect for small teams starting their journey",
     features: [
       "Up to 5 team members",
@@ -19,13 +19,13 @@ const pricingPlans = [
       "API access (100 req/min)",
       "2 environments"
     ],
-    cta: "Start Free Trial",
+    cta: "Contact Us",
     popular: false
   },
   {
     name: "Professional",
-    monthlyPrice: 249,
-    yearlyPrice: 2490,
+    monthlyPrice: 19999,
+    yearlyPrice: 199990,
     description: "Ideal for growing businesses with advanced needs",
     features: [
       "Up to 20 team members",
@@ -37,13 +37,13 @@ const pricingPlans = [
       "SSO authentication",
       "Role-based access control"
     ],
-    cta: "Start Free Trial",
+    cta: "Contact Us",
     popular: true
   },
   {
     name: "Enterprise",
-    monthlyPrice: 999,
-    yearlyPrice: 9990,
+    monthlyPrice: 79999,
+    yearlyPrice: 799990,
     description: "For organizations requiring maximum scale and support",
     features: [
       "Unlimited team members",
@@ -57,13 +57,17 @@ const pricingPlans = [
       "Dedicated account manager",
       "On-premise deployment options"
     ],
-    cta: "Contact Sales",
+    cta: "Contact Us",
     popular: false
   }
 ];
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
+
+  const handleContactClick = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="pricing" className="py-20">
@@ -116,7 +120,7 @@ const Pricing = () => {
               <CardContent>
                 <div className="mb-6">
                   <span className="text-4xl font-bold">
-                    ${billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice}
+                    ₹{billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice}
                   </span>
                   <span className="text-gray-500 dark:text-gray-400 ml-2">
                     {billingCycle === "monthly" ? "/month" : "/year"}
@@ -140,6 +144,7 @@ const Pricing = () => {
                       : "bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 dark:bg-transparent dark:text-white dark:border-gray-600 dark:hover:bg-gray-800"
                   }`}
                   size="lg"
+                  onClick={handleContactClick}
                 >
                   {plan.cta}
                 </Button>

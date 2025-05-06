@@ -12,7 +12,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import Services from "@/components/Services";
-import Payment from "@/components/Payment";
 
 const Index = () => {
   const location = useLocation();
@@ -41,14 +40,14 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <div id="features" ref={featuresRef}>
-          <Features />
-        </div>
         <div id="about" ref={aboutRef}>
           <About />
         </div>
         <div id="services" ref={servicesRef}>
           <Services />
+        </div>
+        <div id="features" ref={featuresRef}>
+          <Features />
         </div>
         <Expertise />
         <WhyUs />
@@ -57,9 +56,6 @@ const Index = () => {
         </div>
         <div id="testimonials" ref={testimonialsRef}>
           <Testimonials />
-        </div>
-        <div id="payment">
-          <Payment />
         </div>
         <div id="contact" ref={contactRef}>
           <Contact />
