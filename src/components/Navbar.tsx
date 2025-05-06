@@ -53,24 +53,20 @@ const Navbar = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: sectionId } });
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
   };
 
   const navLinks = [
     { name: 'Features', id: 'features' },
+    { name: 'About', id: 'about' },
+    { name: 'Services', id: 'services' },
     { name: 'Pricing', id: 'pricing' },
     { name: 'Testimonials', id: 'testimonials' },
     { name: 'Contact', id: 'contact' },
-    { name: 'About', id: 'about', isPage: true },
-    { name: 'Services', id: 'services', isPage: true },
   ];
 
   return (
@@ -83,17 +79,17 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/a1ea0507-5673-4393-86ca-3b5900287a72.png"
+              src="/lovable-uploads/e3f7c7b2-44fd-4e25-92f0-2af5f8daf87b.png"
               alt="Logo"
-              className="h-10 w-auto" // Increased logo size
+              className="h-10 w-auto"
             />
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => link.isPage ? navigate(`/${link.id}`) : scrollToSection(link.id)}
+                onClick={() => scrollToSection(link.id)}
                 className="text-sm font-medium text-gray-700 hover:text-brand-600 dark:text-gray-200 dark:hover:text-brand-400 transition-colors relative group"
               >
                 {link.name}
@@ -136,7 +132,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => link.isPage ? navigate(`/${link.id}`) : scrollToSection(link.id)}
+                onClick={() => scrollToSection(link.id)}
                 className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-brand-50 dark:text-gray-200 dark:hover:text-brand-400 dark:hover:bg-brand-900"
               >
                 {link.name}

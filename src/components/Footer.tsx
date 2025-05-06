@@ -10,12 +10,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 flex items-center justify-center">
-                <span className="font-bold text-white text-xl">D</span>
-              </div>
-              <span className="text-xl font-semibold text-white">
-                Devonyx
-              </span>
+              <img 
+                src="/lovable-uploads/e3f7c7b2-44fd-4e25-92f0-2af5f8daf87b.png"
+                alt="Logo"
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-brand-300 mb-6">
               Enterprise-grade SaaS solutions for modern businesses. Scale with confidence.
@@ -64,10 +63,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">About Us</a></li>
+              <li><button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="text-brand-300 hover:text-white transition-colors">About Us</button></li>
               <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Careers</a></li>
               <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Partners</a></li>
-              <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Contact</a></li>
+              <li><button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-brand-300 hover:text-white transition-colors">Contact</button></li>
               <li><a href="#" className="text-brand-300 hover:text-white transition-colors">Press Kit</a></li>
             </ul>
           </div>
