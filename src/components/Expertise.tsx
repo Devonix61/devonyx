@@ -1,64 +1,67 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Check, Shield, Star, Users
-} from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const expertiseAreas = [
   {
-    icon: <Shield className="h-6 w-6 text-brand-500" />,
-    title: "Security First",
-    description: "Enterprise-grade security protocols and compliance standards to protect your data."
+    title: "AI & Machine Learning",
+    description: "Our AI solutions use cutting-edge algorithms to analyze data, predict trends, and automate complex decision-making processes.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
-    icon: <Users className="h-6 w-6 text-brand-500" />,
-    title: "Dedicated Support",
-    description: "24/7 expert support team ready to assist you with any challenges."
+    title: "Cloud Engineering",
+    description: "We design and implement scalable cloud infrastructures that adapt to your business needs while optimizing performance and costs.",
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
-    icon: <Star className="h-6 w-6 text-brand-500" />,
-    title: "Best-in-Class Solutions",
-    description: "Cutting-edge technology solutions tailored to your business needs."
-  },
-  {
-    icon: <Check className="h-6 w-6 text-brand-500" />,
-    title: "Proven Track Record",
-    description: "Years of experience serving enterprise clients across industries."
+    title: "Cybersecurity",
+    description: "Our comprehensive security frameworks protect your digital assets from threats while ensuring compliance with industry regulations.",
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   }
 ];
 
 const Expertise = () => {
   return (
-    <section id="expertise" className="py-20 bg-gradient-to-b from-brand-50/50 to-white dark:from-brand-900/50 dark:to-brand-950">
+    <div className="bg-gray-50 dark:bg-black py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="heading-gradient">Our Expertise</span>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Our Technical Expertise
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Leverage our deep industry knowledge and technical expertise to transform your business.
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            We combine deep technical knowledge with industry experience to deliver innovative solutions.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {expertiseAreas.map((area, index) => (
-            <Card key={index} className="border border-brand-100 dark:border-brand-800 bg-white/80 dark:bg-brand-900/50 backdrop-blur-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-brand-100 dark:bg-brand-800/50 flex items-center justify-center mb-4">
-                  {area.icon}
-                </div>
-                <CardTitle>{area.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 dark:text-gray-300">
+            <div
+              key={index}
+              className="bg-white dark:bg-brand-900 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={area.image}
+                  alt={area.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                  {area.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {area.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+                </p>
+                <div className="flex items-center text-brand-600 dark:text-brand-400">
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  <span className="text-sm font-medium">Industry Leading</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

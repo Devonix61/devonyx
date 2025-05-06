@@ -1,68 +1,101 @@
 
-import { Check } from "lucide-react";
+import { 
+  Award, 
+  Clock, 
+  Users, 
+  ShieldCheck,
+  Laptop,
+  LineChart
+} from "lucide-react";
 
 const reasons = [
   {
-    title: "Comprehensive Solutions",
-    description: "End-to-end digital transformation with integrated solutions that work seamlessly together."
+    icon: <Award className="h-10 w-10 text-brand-500" />,
+    title: "Award-Winning Solutions",
+    description: "Our innovative approach has earned recognition from industry experts and satisfied clients worldwide."
   },
   {
-    title: "Scalable Infrastructure",
-    description: "Cloud-native architecture that grows with your business needs without compromising performance."
+    icon: <Users className="h-10 w-10 text-brand-500" />,
+    title: "Expert Team",
+    description: "Our specialists bring years of industry experience and deep technical knowledge to every project."
   },
   {
-    title: "Cost Efficiency",
-    description: "Optimize your technology spending with our efficient, modular solutions and transparent pricing."
+    icon: <Clock className="h-10 w-10 text-brand-500" />,
+    title: "Rapid Development",
+    description: "We employ agile methodologies to deliver solutions quickly without sacrificing quality or security."
   },
   {
-    title: "Innovation Focus",
-    description: "Stay ahead with cutting-edge technology and continuous platform improvements."
+    icon: <ShieldCheck className="h-10 w-10 text-brand-500" />,
+    title: "Enterprise Security",
+    description: "Your data protection is our priority, with industry-leading security practices integrated into every solution."
+  },
+  {
+    icon: <Laptop className="h-10 w-10 text-brand-500" />,
+    title: "Modern Technologies",
+    description: "We leverage cutting-edge tools and frameworks to build future-proof solutions that scale with your business."
+  },
+  {
+    icon: <LineChart className="h-10 w-10 text-brand-500" />,
+    title: "Data-Driven Approach",
+    description: "Our recommendations and solutions are backed by thorough analysis and measurable performance metrics."
   }
 ];
 
 const WhyUs = () => {
   return (
-    <section id="why-us" className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="heading-gradient">Why You Need Devonyx's Support</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              Partner with us to transform your business operations and achieve sustainable growth with our enterprise-grade solutions.
+    <div className="relative py-24 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-brand-50 dark:bg-brand-900/20 rounded-full opacity-50 blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-purple-50 dark:bg-purple-900/20 rounded-full opacity-70 blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Why You Need Devonyx's Support
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Our comprehensive approach combines technical excellence with business acumen to deliver outstanding results.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {reasons.map((reason, index) => (
+            <div 
+              key={index}
+              className="bg-white dark:bg-brand-900/50 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="bg-brand-50 dark:bg-brand-800/50 rounded-full p-4 inline-block mb-6">
+                {reason.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                {reason.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                {reason.description}
+              </p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="bg-gradient-to-r from-brand-600 to-purple-600 rounded-xl p-8 md:p-12 text-white shadow-xl overflow-hidden relative">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080')] opacity-10 mix-blend-overlay bg-center bg-cover"></div>
+          <div className="relative z-10">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to transform your business?</h3>
+            <p className="text-lg mb-6 max-w-2xl opacity-90">
+              Our team is committed to helping your organization achieve its digital transformation goals with solutions tailored to your specific needs.
             </p>
-            
-            <div className="space-y-6">
-              {reasons.map((reason, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="h-6 w-6 rounded-full bg-brand-100 dark:bg-brand-800 flex items-center justify-center">
-                      <Check className="h-4 w-4 text-brand-600 dark:text-brand-400" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{reason.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{reason.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-brand-600 to-purple-600 opacity-20 blur-3xl"></div>
-            <div className="relative glass-card rounded-xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-                alt="Technology Dashboard"
-                className="w-full rounded-lg"
-              />
-            </div>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-brand-600 hover:bg-gray-100 px-6 py-3 rounded-md font-semibold transition-colors"
+            >
+              Get Started Today
+            </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

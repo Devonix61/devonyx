@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 
 const Hero = () => {
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
   return (
     <div className="relative overflow-hidden pt-20">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-300/20 via-transparent to-transparent"></div>
@@ -16,7 +20,7 @@ const Hero = () => {
           {/* Hero content */}
           <div className="flex-1 max-w-3xl">
             <div className="inline-flex items-center rounded-full border border-brand-200 dark:border-brand-800 bg-brand-50 dark:bg-brand-900/30 px-3 py-1 mb-6 text-sm text-brand-700 dark:text-brand-300">
-              <span className="text-xs font-semibold">New</span>
+              <span className="text-xs font-semibold">Innovation</span>
               <span className="mx-2 h-1 w-1 rounded-full bg-brand-500"></span>
               <span className="text-xs">
                 Announcing DevonΩ - Our Enterprise AI Solution
@@ -34,10 +38,10 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 mb-12">
-              <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white">
-                Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
+              <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white" onClick={scrollToContact}>
+                Contact Us <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-brand-200 dark:border-brand-800">
+              <Button size="lg" variant="outline" className="border-brand-200 dark:border-brand-800" onClick={scrollToContact}>
                 Book a Demo
               </Button>
             </div>
@@ -45,15 +49,15 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 text-sm">
               <div className="flex items-center">
                 <Check className="mr-2 h-4 w-4 text-brand-500" />
-                <span>No credit card required</span>
+                <span>Enterprise Solutions</span>
               </div>
               <div className="flex items-center">
                 <Check className="mr-2 h-4 w-4 text-brand-500" />
-                <span>14-day free trial</span>
+                <span>Expert Support</span>
               </div>
               <div className="flex items-center">
                 <Check className="mr-2 h-4 w-4 text-brand-500" />
-                <span>Cancel anytime</span>
+                <span>Dedicated Team</span>
               </div>
             </div>
           </div>
@@ -65,7 +69,7 @@ const Hero = () => {
               <div className="relative max-w-lg mx-auto animate-float glass-card rounded-xl p-1 shadow-card">
                 <div className="rounded-lg overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
                     alt="Devonyx dashboard"
                     className="w-full"
                   />

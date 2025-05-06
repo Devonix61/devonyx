@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -19,22 +19,15 @@ const Footer = () => {
             <p className="text-brand-300 mb-6">
               Enterprise-grade SaaS solutions for modern businesses. Scale with confidence.
             </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
-                <Twitter className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
+            <div className="flex">
+              <a 
+                href="https://www.linkedin.com/company/devonyxin/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-brand-300 hover:text-white hover:bg-brand-800 p-2 rounded-full transition-colors"
+              >
                 <Linkedin className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
-                <Github className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-brand-300 hover:text-white hover:bg-brand-800">
-                <Instagram className="h-5 w-5" />
-              </Button>
+              </a>
             </div>
           </div>
           
