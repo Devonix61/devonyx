@@ -13,7 +13,7 @@ export const fadeInAnimation = (delay: number = 0) =>
 export const slideInAnimation = (direction: 'left' | 'right' = 'left', delay: number = 0) => 
   cn(
     direction === 'left' ? "opacity-0 -translate-x-4" : "opacity-0 translate-x-4",
-    "transition-all duration-700 ease-out animate-fade-up",
+    "transition-all duration-700 ease-out",
     delay === 100 && "animation-delay-100",
     delay === 200 && "animation-delay-200", 
     delay === 300 && "animation-delay-300",
@@ -67,3 +67,35 @@ export const borderGlowAnimation = "animate-border-glow";
 export const neonPulseAnimation = "animate-neon-pulse";
 
 export const shimmerAnimation = "animate-shimmer";
+
+// Fixed animations that will work with Tailwind's animation system
+export const appearAnimation = (delay: number = 0) => 
+  cn(
+    "opacity-0 animate-fade-in",
+    delay === 100 && "animation-delay-100",
+    delay === 200 && "animation-delay-200", 
+    delay === 300 && "animation-delay-300",
+    delay === 400 && "animation-delay-400",
+    delay === 500 && "animation-delay-500"
+  );
+
+export const popInAnimation = "opacity-0 scale-90 animate-pop-in";
+
+export const slideUpAnimation = "opacity-0 translate-y-6 animate-slide-up";
+
+export const slideDownAnimation = "opacity-0 -translate-y-6 animate-slide-down";
+
+export const slideLeftAnimation = "opacity-0 translate-x-6 animate-slide-left";
+
+export const slideRightAnimation = "opacity-0 -translate-x-6 animate-slide-right";
+
+export const jiggleAnimation = "animate-jiggle";
+
+export const flashAnimation = "animate-flash";
+
+export const flipAnimation = "animate-flip";
+
+export const wiggleAnimation = "animate-wiggle";
+
+export const pulseGlowAnimation = "animate-pulse-glow";
+
