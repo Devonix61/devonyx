@@ -26,3 +26,44 @@ export const pulseAnimation = "animate-pulse-slow";
 export const hoverScaleAnimation = "transition-transform duration-300 hover:scale-105";
 
 export const shineAnimation = "animate-background-shine bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] text-transparent bg-clip-text";
+
+// New animations
+export const floatAnimation = "animate-float";
+
+export const glowAnimation = "animate-glow";
+
+export const typewriterAnimation = "animate-typewriter";
+
+export const gradientFlow = "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-size-200 animate-gradient-flow bg-clip-text text-transparent";
+
+export const rotateAnimation = "animate-spin-slow";
+
+export const bounceAnimation = "animate-bounce-slow";
+
+export const blurInAnimation = (delay: number = 0) =>
+  cn(
+    "opacity-0 blur-sm animate-blur-in",
+    delay === 100 && "animation-delay-100",
+    delay === 200 && "animation-delay-200",
+    delay === 300 && "animation-delay-300",
+    delay === 400 && "animation-delay-400", 
+    delay === 500 && "animation-delay-500"
+  );
+
+export const scaleInAnimation = (delay: number = 0) =>
+  cn(
+    "opacity-0 scale-95 animate-scale-in",
+    delay === 100 && "animation-delay-100",
+    delay === 200 && "animation-delay-200",
+    delay === 300 && "animation-delay-300",
+    delay === 400 && "animation-delay-400",
+    delay === 500 && "animation-delay-500"
+  );
+
+export const tiltAnimation = "hover:rotate-1 transition-transform duration-300";
+
+export const borderGlowAnimation = "animate-border-glow";
+
+export const neonPulseAnimation = "animate-neon-pulse";
+
+export const shimmerAnimation = "animate-shimmer";
