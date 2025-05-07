@@ -1,29 +1,36 @@
 
 import { CheckCircle } from "lucide-react";
+import { fadeInAnimation, hoverScaleAnimation } from "@/lib/animation";
+import { useInView } from "react-intersection-observer";
 
 const expertiseAreas = [
   {
     title: "AI & Machine Learning",
     description: "Our AI solutions use cutting-edge algorithms to analyze data, predict trends, and automate complex decision-making processes.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
     title: "Cloud Engineering",
     description: "We design and implement scalable cloud infrastructures that adapt to your business needs while optimizing performance and costs.",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   },
   {
     title: "Cybersecurity",
     description: "Our comprehensive security frameworks protect your digital assets from threats while ensuring compliance with industry regulations.",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
   }
 ];
 
 const Expertise = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
-    <div className="bg-gray-50 dark:bg-black py-24">
+    <div className="bg-gray-50 dark:bg-black py-24" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className={`max-w-3xl mx-auto text-center mb-16 ${inView ? 'animate-fade-up' : 'opacity-0'}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             Our Technical Expertise
           </h2>
@@ -36,13 +43,13 @@ const Expertise = () => {
           {expertiseAreas.map((area, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-brand-900 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className={`${inView ? fadeInAnimation(index * 100) : 'opacity-0'} ${hoverScaleAnimation} bg-white dark:bg-brand-900 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500`}
             >
               <div className="h-48 overflow-hidden">
                 <img
                   src={area.image}
                   alt={area.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
               <div className="p-6">
