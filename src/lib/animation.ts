@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 
 export const fadeInAnimation = (delay: number = 0) => 
@@ -98,4 +97,3 @@ export const flipAnimation = "animate-flip";
 export const wiggleAnimation = "animate-wiggle";
 
 export const pulseGlowAnimation = "animate-pulse-glow";
-
